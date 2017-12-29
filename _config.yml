@@ -1,0 +1,29 @@
+title: Graduation Progress Tracker for MTU Graduate School
+description: >
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+timezone: America/Detroit
+
+collections:
+  majors:
+    output: true
+    permalink: /:title
+
+defaults:
+  - scope:
+      type: "majors"
+    values:
+      layout: "tracker"
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - docker-compose.yml
+  - README.md
+  - .travis.yml
+  - .gitignore
+  - LICENSE
