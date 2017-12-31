@@ -1,54 +1,44 @@
-<table class="table table-bordered table-hover mb-4" id="tab_logic{{ include.semester | default: 0 }}">
-	<thead>
-		<tr >
-			<th class="text-center">
-				Course Number
-			</th>
-			<th class="text-center">
-				Course Name
-			</th>
-			<th class="text-center">
-				Credits
-			</th>
-			<th class="text-center">
-				Final Grade
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr id='class0-{{ include.semester | default: 0 }}'>
-			<td>
-        <input type="text" name='number0-{{ include.semester | default: 0 }}'  placeholder='EE5496' class="form-control"/>
-			</td>
-			<td>
-  			<input type="text" name='name0-{{ include.semester | default: 0 }}'  placeholder='GPU and Multicore Programming' class="form-control"/>
-			</td>
-			<td>
-  			<input type="text" name='credits0-{{ include.semester | default: 0 }}' placeholder='3.0' class="form-control"/>
-			</td>
-			<td>
-  			<input type="text" name='grade0-{{ include.semester | default: 0 }}' placeholder='AB' class="form-control"/>
-			</td>
-		</tr>
-    <tr id='class1-{{ include.semester | default: 0 }}'></tr>
-	</tbody>
-</table>
-<a id="add_class-{{ include.semester | default: 0 }}" class="btn btn-primary pull-left" role="button">Add Class</a><a id='delete_class-{{ include.semester | default: 0 }}' class="pull-right btn btn-primary" role="button">Delete Class</a>
-<script>
-$(document).ready(function(){
-  var i=1;
-  $("#add_class-{{ include.semester | default: 0 }}").click(function(){
-    $('#class'+i+'-{{ include.semester | default: 0 }}').html("<td><input name='number"+i+"-{{ include.semester | default: 0 }}' type='text' placeholder='EE5496' class='form-control input-md'  /></td><td><input name='name"+i+"-{{ include.semester | default: 0 }}' type='text' placeholder='GPU and Multicore Programming' class='form-control input-md'  /> </td><td><input  name='grade"+i+"-{{ include.semester | default: 0 }}' type='text' placeholder='3.0'  class='form-control input-md'></td><td><input  name='grade"+i+"-{{ include.semester | default: 0 }}' type='text' placeholder='AB'  class='form-control input-md'></td>");
-
-    $('#tab_logic{{ include.semester | default: 0 }}').append('<tr id="class'+(i+1)+'-{{ include.semester | default: 0 }}"></tr>');
-    i++;
-  });
-
-  $("#delete_class-{{ include.semester | default: 0 }}").click(function(){
-    if(i>1){
-      $("#class"+(i-1)+"-{{ include.semester | default: 0 }}").html('');
-      i--;
-    }
-  });
-});
-</script>
+<div id="semester-{{ include.semester | default: 0 }}" class="mb-4">
+  <input type="text" name="semester-{{ include.semester | default: 0 }}-input" id="semester-{{ include.semester | default: 0 }}-input"  placeholder="Spring 2017" class="form-control"/>
+  <table class="table mb-2" id="tab_logic{{ include.semester | default: 0 }}">
+  	<thead>
+  		<tr >
+  			<th class="text-center">
+  				Course Number
+  			</th>
+  			<th class="text-center">
+  				Course Name
+  			</th>
+  			<th class="text-center">
+  				Credits
+  			</th>
+  			<th class="text-center">
+  				Final Grade
+  			</th>
+        <th>
+          <a id="add_class" class="text-success" onclick="add_class({{ include.semester | default: 0 }})"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          <a id="delete_class" class="text-danger" onclick="delete_class({{ include.semester | default: 0 }})"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        </th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+  			<td id="row-{{ include.semester | default: 0 }}-1">
+          <input type="text" name="number-{{ include.semester | default: 0 }}"  placeholder="EE5496" class="form-control"/>
+  			</td>
+  			<td>
+    			<input type="text" name="name-{{ include.semester | default: 0 }}"  placeholder="GPU and Multicore Programming" class="form-control"/>
+  			</td>
+  			<td>
+    			<input type="text" name="credits-{{ include.semester | default: 0 }}" placeholder="3.0" class="form-control"/>
+  			</td>
+  			<td>
+    			<input type="text" name="grade-{{ include.semester | default: 0 }}" placeholder="AB" class="form-control"/>
+  			</td>
+        <td>
+          <a id="check_class" class="text-primary" onclick="check_class({{ include.semester | default: 0 }})"><i class="fa fa-check" aria-hidden="true"></i></a>
+        </td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
