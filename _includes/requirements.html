@@ -1,0 +1,21 @@
+<div class="card mb-3">
+  <div class="card-header text-center">
+    {{ include.plan.name }}
+  </div>
+  {% if include.plan.description %}
+  <div class="card-body">
+    <div class="card-text">
+      {{ include.plan.description | markdownify }}
+    </div>
+  </div>
+  {% endif %}
+  <ul class="list-group list-group-flush">
+    {% for r in include.plan.requirements %}
+    <li class="list-group-item">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
