@@ -2,43 +2,54 @@
   <input type="text" name="semester-{{ include.semester | default: 0 }}-input" id="semester-{{ include.semester | default: 0 }}-input"  placeholder="Spring 2017" class="form-control"/>
   <table class="table mb-2" id="tab_logic{{ include.semester | default: 0 }}">
   	<thead>
-  		<tr >
-  			<th class="text-center">
+  		<tr>
+  			<th class="text-center" style="width: 20%;">
   				Course Number
   			</th>
   			<th class="text-center">
   				Course Name
   			</th>
-  			<th class="text-center">
+  			<th class="text-center" style="width: 12%;">
   				Credits
   			</th>
-  			<th class="text-center">
+  			<th class="text-center" style="width: 15%;">
   				Final Grade
   			</th>
-        <th>
+        <th class="text-center">
           <a id="add_class" class="text-success" onclick="add_class({{ include.semester | default: 0 }})"><i class="fa fa-plus" aria-hidden="true"></i></a>
           <a id="delete_class" class="text-danger" onclick="delete_class({{ include.semester | default: 0 }})"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
         </th>
   		</tr>
   	</thead>
   	<tbody>
-  		<tr>
-  			<td id="row-{{ include.semester | default: 0 }}-1">
-          <input type="text" name="number-{{ include.semester | default: 0 }}"  placeholder="EE5496" class="form-control"/>
-  			</td>
-  			<td>
-    			<input type="text" name="name-{{ include.semester | default: 0 }}"  placeholder="GPU and Multicore Programming" class="form-control"/>
-  			</td>
-  			<td>
-    			<input type="text" name="credits-{{ include.semester | default: 0 }}" placeholder="3.0" class="form-control"/>
-  			</td>
-  			<td>
-    			<input type="text" name="grade-{{ include.semester | default: 0 }}" placeholder="AB" class="form-control"/>
-  			</td>
-        <td>
-          <a id="check_class" class="text-primary" onclick="check_class({{ include.semester | default: 0 }})"><i class="fa fa-check" aria-hidden="true"></i></a>
-        </td>
-  		</tr>
+      <tr>
+        <form autocomplete="off" action="" method="GET" name="row_form_{{ include.semester | default: 0 }}">
+    			<td>
+            <input type="text" name="number" placeholder="EE5496" class="form-control"/>
+    			</td>
+    			<td>
+      			<input type="text" name="name" placeholder="GPU and Multicore Programming" class="form-control"/>
+    			</td>
+    			<td>
+      			<input type="number" name="credits" placeholder="3.0" class="form-control"/>
+    			</td>
+    			<td>
+            <select class="form-control" name="grade">
+              <option value="4">A</option>
+              <option value="3.5">AB</option>
+              <option value="3">B</option>
+              <option value="2.5">BC</option>
+              <option value="2">C</option>
+              <option value="1.5">CD</option>
+              <option value="1">D</option>
+              <option value="0">F</option>
+            </select>
+    			</td>
+          <td>
+            <button type="submit" class="btn btn-primary btn-block text-white" onclick="check_class(this.form)"><i class="fa fa-check" aria-hidden="true"></i></button>
+          </td>
+    		</form>
+      </tr>
   	</tbody>
   </table>
 </div>
