@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  {% include head.html %}
+  <body>
+    {% include navbar.html %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9" id="semesterCol">
+          {{ content }}
+          {% include semester.html %}
+          <hr/>
+          {% include semester.html semester="1" %}
+          <hr/>
+          {% include semester.html semester="2" %}
+          <hr/>
+          {% include semester.html semester="3" %}
+        </div>
+        <div class="col-md-3" id="requirementsCol">
+          <div class="btn-group btn-group-justified btn-block mb-3" role="group">
+            <a class="btn btn-success text-white w-50"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</a>
+            <a class="btn btn-primary text-white w-50"><i class="fa fa-upload" aria-hidden="true"></i> Load</a>
+          </div>
+          {% for p in page.plans %}
+          {% include requirements.html plan=p %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% include footer.html %}
+    {% include scripts.html %}
+    <script type='text/javascript'>
+    function check_class() {
+        // var TestVar = form.inputbox.value;
+        // alert (form.number.value + "\n" + form.name.value + "\n" + form.credits.value + "\n" + form.grade.value);
+        $.get("{{ page.url | relative_url }}", function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    }
+    </script>
+  </body>
+</html>
