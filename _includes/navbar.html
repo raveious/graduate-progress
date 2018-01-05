@@ -11,7 +11,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="majors" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Majors</a>
           <div class="dropdown-menu" aria-labelledby="majors">
             {% for m in site.majors %}
-            <a class="dropdown-item" href="{{ m.url }}">{{m.title}}</a>
+            <a class="dropdown-item" href="{{ m.url | relative_url }}">{{m.title}}</a>
             {% endfor %}
           </div>
         </li>
