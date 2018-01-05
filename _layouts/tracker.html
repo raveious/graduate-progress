@@ -27,15 +27,15 @@
       </div>
     </div>
     {% include footer.html %}
-    {% include scripts.html %}
-    <script type='text/javascript'>
-    function check_class() {
-        // var TestVar = form.inputbox.value;
-        // alert (form.number.value + "\n" + form.name.value + "\n" + form.credits.value + "\n" + form.grade.value);
-        $.get("{{ page.url | relative_url }}", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
-    }
-    </script>
   </body>
+  {% include scripts.html %}
+  <script type='text/javascript'>
+  $(function() {
+    function check_class() {
+      $.get("{{ page.url | relative_url }}", function(data, status){
+          alert("Data: " + data + "\nStatus: " + status);
+      });
+    }
+  });
+  </script>
 </html>
